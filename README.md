@@ -182,9 +182,48 @@ original demo app. The following code block must therefore be adjusted:
 if (response.status === 200) {
   return {
     body: {
-      todos: await response.json() // <- replace this with
-      todos: await response.body // <- this
+      todos: await response.json() // <- replace this
+      todos: await response.body // <- with this
     }
   };
 }
 ```
+
+## Building
+
+Before you can create a production version of your SvelteKit app, you need to 
+adapt it for your deployment target. 
+See [Adapters](https://kit.svelte.dev/docs/adapters).
+
+Let's try it with a simple node server:
+
+```sh 
+$ yarn add --dev @sveltejs/adapter-node@next
+```
+
+```js
+// svelte.config.js
+
+import adapter from '@sveltejs/adapter-auto'  // <- replace this
+import adapter from '@sveltejs/adapter-node'// <- with this
+```
+
+To create a production version of your app:
+
+```bash
+yarn run build
+```
+
+You can preview the production build:
+
+```sh
+$ yarn run preview
+```
+
+Run production build:
+
+```sh
+$ node build
+```
+
+Done :-)
