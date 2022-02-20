@@ -18,7 +18,7 @@ export const get: RequestHandler = async ({ locals }) => {
 	if (response.status === 200) {
 		return {
 			body: {
-				todos: await response.json()
+				todos: await response.body
 			}
 		};
 	}
